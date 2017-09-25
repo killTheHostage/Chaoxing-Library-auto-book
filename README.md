@@ -1,6 +1,11 @@
-# UJN-Library-auto-book
-济南大学图书馆便捷预约，目前的阶段实现了登陆和预约的完整业务流程，并封装成简单API的形式存在于两个类中   
-## login API    
+# UJN-Library-auto-book（济南大学图书馆自助）
+济南大学图书馆便捷预约，目前的阶段实现了登陆和预约的完整业务流程，并封装成简单API的形式存在于两个类中  
+## 1.0.3更新日志     
+修复了login类不返回HTML句柄的问题    
+更新了最新的预约座位验证策略，maa类中增加getCaptcha()来获取预定时的验证码    
+分离了libApi.py，提供单独API的调用和下载      
+# API文档    
+## login API    
 login类为登陆类，需要进行实例化才能使用   
 self.username：登陆用户名   
 self.password：登陆密码    
