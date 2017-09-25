@@ -294,7 +294,6 @@ class autoProcess():
         self.userConfigTxt = self.userConfigTxt.replace('\n','')
         self.unpw = []
         self.seatInfo = []
-        self.processInfo = []
         self.autoSelect = ''
         self.seatId = ''
         self.processType = ''
@@ -406,6 +405,8 @@ class autoProcess():
             self.seatId
         elif self.processType == 'normal':
             self.normalP()
+        else:
+        	self.normalP()
 
     def normalP(self):
         loginHandle = login()
