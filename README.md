@@ -35,7 +35,7 @@ getStartTime(座位id)：获取按照筛选条件查找后预约开始的全部�
 getEndTime(座位id,开始预约时间)：获取按照筛选条件查找后预约结束的全部时间（前提函数：getSeatInfo() getStartTime()，核心前提函数：getSeatJson(页面)，前提条件：座位ID、预约日期和开始预约时间）   
 maaCore(座位id,开始预约时间,结束预约时间)：预约座位核心函数（前提条件：预约日期）   
 maa()：预约函数--不可单独调用，需要按照上述函数给出的流程调用   
-### autoProcess   
+## autoProcess   
 autoProcess类为流程类，需要实例化才能使用（如果使用autoProcess类，默认不需要实例化上述两类）   
 self.userConfigTxt：用户配置文件   
 self.unpw：用户名密码集   
