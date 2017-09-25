@@ -45,7 +45,7 @@ self.seatId：座位ID
 self.processType：工作方式--目前暂时支持：常规方式（normal），根据配置文件中的搜索条件直接搜索对应座位（bookA），根据配置文件中的座位ID和预约日期直接预约指定的座位ID（bookB）；以后将实现的：登陆后根据配置文件自动查找符合条件的座位，自动预约（autoBook），长期锁定某个座位（lock）   
 checkConfig()：检查配置文件是否存在（此类的前导函数，必须检查配置文件是否存在）--文件存在返回True，不存在返回False   
 getLoginInfo()：从配置文件中读入用户名密码--文件中存在同时存在用户名密码返回True，否则返回False   
-getSeatInfo（）：从配置文件中读入座位筛选信息--文件中存在完整的作为筛选信息返回True，否则返回False   
+getSeatInfo()：从配置文件中读入座位筛选信息--文件中存在完整的作为筛选信息返回True，否则返回False   
 getAutoSelect()：从配置文件中读入自动筛选标识--文件中存在自动筛选标识返回True，否则返回False   
 getSeatId()：从配置文件中读入座位ID--文件中存在座位ID返回True，否则返回False   
 getProcessType()：从配置文件中读入工作模式--文件中存在对应的工作模式存入对应工作模式，否则存入常规方式   
