@@ -2,7 +2,7 @@
 <br>
 济南大学图书馆便捷预约，目前的阶段实现了登陆和预约的完整业务流程，并封装成简单API的形式存在于两个类中
 <br>
-## login API
+### login API
 <br>
 login类为登陆类，需要进行实例化才能使用
 <br>
@@ -22,7 +22,7 @@ loginCore()：login核心部分（支持直接传递username和password进行登
 <br>
 login()：执行常规登陆流程（需要自己输入用户名密码）
 <br>
-## maa API
+### maa API
 <br>
 maa类为预约类，需要进行实例化才能使用
 <br>
@@ -72,7 +72,7 @@ maaCore(座位id,开始预约时间,结束预约时间)：预约座位核心函�
 <br>
 maa()：预约函数--不可单独调用，需要按照上述函数给出的流程调用
 <br>
-## autoProcess
+### autoProcess
 <br>
 autoProcess类为流程类，需要实例化才能使用（如果使用autoProcess类，默认不需要实例化上述两类）
 <br>
