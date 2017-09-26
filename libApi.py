@@ -2,6 +2,7 @@
 import requests
 import time
 import re
+import os
 from lxml import etree
 
 cookieJar = None
@@ -23,6 +24,8 @@ class login:
             'Connection' : 'keep-alive',
             'Upgrade-Insecure-Requests' : '1'
         }
+        if not os.path.exists('captcha'):
+            os.makedirs('captcha')
 
 
     def getCookies(self):
@@ -35,7 +38,7 @@ class login:
         global cookieJar
         url = 'http://' + self.header['Host'] + '/simpleCaptcha/captcha'
         html = requests.get(url, cookies = cookieJar, headers = self.header)
-        captcha = open('loginCaptcha.png','wb')
+        captcha = open(os.getcwd() + '/captcha/loginCaptcha.png','wb')
         captcha.write(html.content)
         captcha.close()
 
@@ -48,7 +51,7 @@ class login:
     def loginCore(self):
         self.getCookies()
         self.getCaptcha()
-        captcha = input('please input captcha(captcha is in loginCaptcha.png) : ')
+        captcha = input('please input captcha(captcha is in captcha/loginCaptcha.png) : ')
         data = {
             'username' : self.username,
             'password' : self.password,
@@ -61,9 +64,11 @@ class login:
         titleName = re.findall(reStr,loginHtml.text,re.S)
         if(titleName[0] == '自选座位 :: 图书馆预约系统'):
             print('login success')
+            os.remove(os.getcwd() + '/captcha/loginCaptcha.png')
             return loginHtml
         else:
             print('login fail')
+            os.remove(os.getcwd() + '/captcha/loginCaptcha.png')
             return None
 
 class maa:
@@ -206,7 +211,7 @@ class maa:
         global cookieJar
         url = 'http://' + self.header['Host'] + '/simpleCaptcha/captcha'
         html = requests.get(url, cookies = cookieJar, headers = self.header)
-        captcha = open('bookCaptcha.png','wb')
+        captcha = open(os.getcwd() + '/captcha/bookCaptcha.png','wb')
         captcha.write(html.content)
         captcha.close()
 
@@ -261,7 +266,7 @@ class maa:
 
     def maaCore(self,seatId,startTime,endTime):
         self.getCaptcha()
-        captcha = input('please input captcha(captcha is in loginCaptcha.png) : ')
+        captcha = input('please input captcha(captcha is in captcha/bookCaptcha.png) : ')
         global cookieJar
         url = 'http://seat.ujn.edu.cn/selfRes'
         postData = {
@@ -279,9 +284,12 @@ class maa:
             result = re.findall(successStr,maaHtml.text,re.S)
             if result != []:
                 if result[0] == '<dt>系统已经为您预定好了<span style="color:red">座位</span></dt>':
+                    os.remove(os.getcwd() + '/captcha/bookCaptcha.png')
                     return True
             else:
+                os.remove(os.getcwd() + '/captcha/bookCaptcha.png')
                 return False
+        os.remove(os.getcwd() + '/captcha/bookCaptcha.png')
         return False
 
     def maa(self):#main
@@ -299,4 +307,4 @@ class maa:
                     return
                 else:
                     continue
-        print('---------------------------------------\nmaa fail\n---------------------------------------')
+        print('---------------------------------------\nmaa fail\nmaa core error\n---------------------------------------')
