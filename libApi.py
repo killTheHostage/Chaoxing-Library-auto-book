@@ -62,7 +62,7 @@ class login:
         loginHtml = requests.post(loginUrl, data, cookies = cookieJar, headers = self.header)
         reStr = '<title>(.*?)</title>'
         titleName = re.findall(reStr,loginHtml.text,re.S)
-        if(titleName[0] == '自选座位 :: 图书馆预约系统'):
+        if(titleName[0] == '自选座位 :: 图书馆空间预约系统'):
             print('login success')
             os.remove(os.getcwd() + '/captcha/loginCaptcha.png')
             return loginHtml
