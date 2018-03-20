@@ -1,5 +1,5 @@
 # ChaoXingLibraryAutoBook
- 超星图书馆空间预约自动化便捷脚本        
+ 超星图书馆空间预约自动化便捷脚本                  
  脚本需要引用requests和etree，请自行下载
  ---
  ## 1.0.7更新日志
